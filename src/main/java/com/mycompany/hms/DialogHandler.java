@@ -565,4 +565,5 @@ public class DialogHandler {
     public void deleteIllness(){
         
     }
+    
 }
