@@ -516,7 +516,9 @@ public class DialogHandler {
     
     //add Forms
     public void doctorAddButton(){
-        
+        SwingUtilities.updateComponentTreeUI(dialog);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }
     
     public void cppointmentAddButton(){

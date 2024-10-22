@@ -54,8 +54,10 @@ public class Admin {
                 query = "SELECT * FROM Specialisations WHERE SpecCode = '" + (String)rs1.getString("SpecCode") + "'";
                 Statement s3 = conn.createStatement(); 
                 rs1 = s3.executeQuery(query);
-                rs1.next();
-                doctorInfo[3] = (String)rs1.getString("Specialisation");
+                if(rs1.next()){
+                    doctorInfo[3] = (String)rs1.getString("Specialisation");
+                }
+                
                 
                     for(int i = 0; i<4; i++){
                    HealthVisitorTable.setValueAt(doctorInfo[i], j, i);
