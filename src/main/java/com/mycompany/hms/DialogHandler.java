@@ -515,27 +515,27 @@ public class DialogHandler {
     }
     
     //add Forms
-    public void showDoctorAdd(){
+    public void doctorAddButton(){
         
     }
     
-    public void showAppointmentAdd(){
+    public void cppointmentAddButton(){
         
     }
     
-    public void showNurseAdd(){
+    public void nurseAddButton(){
         
     }
     
-    public void showPatientAdd(){
+    public void patientAddButton(){
         
     }
     
-    public void showSpecAdd(){
+    public void specAddButton(){
         
     }
     
-    public void showIllnessAdd(){
+    public void illnessAddButton(){
         
     }
     

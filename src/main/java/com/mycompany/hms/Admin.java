@@ -47,10 +47,13 @@ public class Admin {
                 
                 
                 query = "SELECT * FROM DoctorSpecialisations WHERE DoctorID = '" + (String)rs.getString("ID") + "'";
-                rs1 = s.executeQuery(query);
+                Statement s2 = conn.createStatement();
+                rs1 = s2.executeQuery(query);
                 rs1.next();
+                
                 query = "SELECT * FROM Specialisations WHERE SpecCode = '" + (String)rs1.getString("SpecCode") + "'";
-                rs1 = s.executeQuery(query);
+                Statement s3 = conn.createStatement(); 
+                rs1 = s3.executeQuery(query);
                 rs1.next();
                 doctorInfo[3] = (String)rs1.getString("Specialisation");
                 
@@ -61,7 +64,7 @@ public class Admin {
                 
             }
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(null,e + "\nUnable to load Doctors");
+            JOptionPane.showMessageDialog(null,e + "\nUnable to load Doctors this is problem");
         }
     }///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
          public void ViewADoctor(String search){//method to enter a specific doctor ID to view doctors with that ID
