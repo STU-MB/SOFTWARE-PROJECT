@@ -10,6 +10,8 @@ package main.java.com.mycompany.hms;
  */
 public class CollabClass {
     //we will collaborate here
+    
+    int arr[]={10,20};
     int i = 7;
     //bubble sort is fast
     //kevolin was here
