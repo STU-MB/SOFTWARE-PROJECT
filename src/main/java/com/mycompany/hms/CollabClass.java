@@ -11,4 +11,5 @@ package main.java.com.mycompany.hms;
 public class CollabClass {
     //we will collaborate here
     int i = 7;
+    //bubble sort is fast
 }
