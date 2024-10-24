@@ -9,6 +9,7 @@ package main.java.com.mycompany.hms;
  * @author Vishay
  */
 public class tester {///kevo was here
-   
-    
+   public void bumcum(){
+       int i = 69;     
+   } 
 }
