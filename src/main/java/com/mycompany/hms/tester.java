@@ -8,7 +8,7 @@ package main.java.com.mycompany.hms;
  *
  * @author Vishay
  */
-public class tester {///you think you're the king
+public class tester {///kevo is the king
    
     
 }
