@@ -18,4 +18,5 @@ public class CollabClass {
     //blahhhhhhh
     //joooooooooo
     ///kevooooo
+    int k = 0; 
 }
