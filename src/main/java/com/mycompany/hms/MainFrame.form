@@ -676,6 +676,9 @@
               <Color blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capsuleButton21ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -901,7 +904,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="57" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -946,7 +949,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1007,7 +1010,7 @@
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2946,11 +2949,12 @@
                         <Component class="javax.swing.JTable" name="jTable1">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="4">
+                              <Table columnCount="5" rowCount="4">
                                 <Column editable="false" title="Surname" type="java.lang.Object"/>
                                 <Column editable="false" title="Name" type="java.lang.String"/>
                                 <Column editable="false" title="Room Number" type="java.lang.Integer"/>
                                 <Column editable="false" title="Time" type="java.lang.String"/>
+                                <Column editable="false" title="Completed" type="java.lang.Boolean"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -2971,7 +2975,12 @@
                                   <Renderer/>
                                 </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title value="Condition"/>
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
@@ -3100,6 +3109,9 @@
                       <Font name="Century Gothic" size="14" style="1"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capsuleButton5ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

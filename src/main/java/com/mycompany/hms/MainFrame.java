@@ -8,6 +8,7 @@ import com.formdev.flatlaf.*;
 import java.awt.*;
 import java.nio.file.Paths;
 import java.sql.*;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -695,6 +696,11 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton21.setcolorDefualt(new java.awt.Color(204, 204, 204));
         capsuleButton21.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton21.setcolorPressed(java.awt.Color.gray);
+        capsuleButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton21ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout appointmentAddLayout = new javax.swing.GroupLayout(appointmentAdd.getContentPane());
         appointmentAdd.getContentPane().setLayout(appointmentAddLayout);
@@ -907,7 +913,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel35)
                     .addComponent(jLabel36)
@@ -954,7 +960,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(doctorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         capsuleButton28.setText("ADD");
@@ -984,7 +990,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(patientAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel34)))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         patientAddLayout.setVerticalGroup(
             patientAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1990,20 +1996,20 @@ public class MainFrame extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Surname", "Name", "Room Number", "Time"
+                "Surname", "Name", "Room Number", "Time", "Completed"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2018,9 +2024,6 @@ public class MainFrame extends javax.swing.JFrame {
         jTable1.setSelectionForeground(new java.awt.Color(102, 102, 102));
         jTable1.setShowGrid(true);
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Condition");
-        }
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel5.setText("Upcoming Appointments");
@@ -2129,6 +2132,11 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton5.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton5.setcolorPressed(java.awt.Color.gray);
         capsuleButton5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        capsuleButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout doctorWelcomePanelLayout = new javax.swing.GroupLayout(doctorWelcomePanel);
         doctorWelcomePanel.setLayout(doctorWelcomePanelLayout);
@@ -3255,11 +3263,22 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_capsuleButton19ActionPerformed
 
     private void capsuleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton3ActionPerformed
-        // TODO add your handling code here:
+       DialogHandler a = new DialogHandler(url); //instantaite the class
+       a.setTable(Appointments); //table is the table in the edit dialog that we need to display to
+       a.displayAppointmentEditForm(); //displays data to table in edit dialog
+       SwingUtilities.updateComponentTreeUI(appointmentEdit); //makes it look nice
+       appointmentEdit.setLocationRelativeTo(this);
+       appointmentEdit.setVisible(true);  
+
+
+
+       // TODO add your handling code here:
     }//GEN-LAST:event_capsuleButton3ActionPerformed
 
     private void capsuleButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton22ActionPerformed
-        // TODO add your handling code here:
+        SwingUtilities.updateComponentTreeUI(appointmentAdd);
+        appointmentAdd.setLocationRelativeTo(this);
+        appointmentAdd.setVisible(true);
     }//GEN-LAST:event_capsuleButton22ActionPerformed
 
     private void capsuleButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton23ActionPerformed
@@ -3289,13 +3308,24 @@ public class MainFrame extends javax.swing.JFrame {
     private void capsuleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_capsuleButton2ActionPerformed
-
+public static String user;
     private void capsuleButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton14ActionPerformed
+        
         CardLayout cardLayout = (CardLayout) Parent.getLayout();
+        
         Parent.add(doctorPanel, "doctorPanel");
-        if(uText.getText().equals("D") && String.valueOf(pText.getPassword()).equals("d")){
-            cardLayout.show(Parent,"doctorPanel");
+        user = uText.getText();
+        
+        if(uText.getText().equals("D007") && (String.valueOf(pText.getPassword()).equals("sally5")) || (String.valueOf(pText.getPassword()).equals("d"))){
             
+            cardLayout.show(Parent,"doctorPanel");
+            doctor d = new doctor(url);
+            d.setUser(user);
+            jLabel4.setText("Welcome Dr. " +d.getUser(user));
+            d.setTable(jTable2);
+            d.viewPatient(user);  
+            d.setTable(jTable1);
+            d.viewData();
         }
         if(uText.getText().equals("N") && String.valueOf(pText.getPassword()).equals("n")){
             Parent.add(nursePanel, "nursePanel");
@@ -3313,8 +3343,8 @@ public class MainFrame extends javax.swing.JFrame {
             HealthVisitor h = new HealthVisitor(url);
             h.setDoctorTable(healthVisitorTable);
         }
-        SwingUtilities.updateComponentTreeUI(patientAdd);
-        patientEdit.setVisible(true);
+//        SwingUtilities.updateComponentTreeUI(patientAdd);
+//        patientEdit.setVisible(true);
         
         if(uText.getText().equals("A") && String.valueOf(pText.getPassword()).equals("a")){
             Parent.add(adminPanel, "adminPanel");
@@ -3658,7 +3688,51 @@ public class MainFrame extends javax.swing.JFrame {
     private void doctorComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_doctorComboActionPerformed
+
+    private void capsuleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton5ActionPerformed
+          // TODO add your handling code here: //logout button
+         loginPanel.setVisible(true);
+         doctorPanel.setVisible(false);
+    }//GEN-LAST:event_capsuleButton5ActionPerformed
+
+    private void capsuleButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton21ActionPerformed
+        String Doctor = jTextField11.getText();
+        String Nurse = jTextField12.getText();
+        String Patient = jTextField10.getText();
+        String Slot = (String)slotNumberCombo.getSelectedItem();
+        String insertSQL = "INSERT INTO Appointments (SlotNum, StartTime, PatientCode. NurseCode, DoctorCode, Completed, RoomNumber";
+        
+    }//GEN-LAST:event_capsuleButton21ActionPerformed
      
+    public Time slotToTime(String slot){
+        LocalTime time;
+        
+        switch (slot){
+            case "S1": 
+                time = LocalTime.of(8,0);
+                return Time.valueOf(time);
+            case "S2":
+                time = LocalTime.of(10, 0);
+                return Time.valueOf(time);
+            case "S3":
+                time = LocalTime.of(12, 0);
+                return Time.valueOf(time);
+            case "S4":
+                time = LocalTime.of(14, 0);
+                return Time.valueOf(time);  
+            case "S5":
+                time = LocalTime.of(16, 0);
+                return Time.valueOf(time);
+            case "S6":
+                time = LocalTime.of(18, 0);
+                return Time.valueOf(time);    
+            case "S7":
+                time = LocalTime.of(20, 0);
+                return Time.valueOf(time);    
+        }
+        return null;
+    }
+    
     
 
     /**
