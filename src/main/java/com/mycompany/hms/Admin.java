@@ -33,7 +33,7 @@ public class Admin {
          
          public void ViewAllDoctors(){
         String doctorInfo[] = new String[4];
-        String query = "SELECT Surname FROM Parients";   
+        String query = "SELECT * FROM Doctors";   
             int j = 0;
         try{
             conn = DriverManager.getConnection(DBSLocation);
