@@ -3,9 +3,10 @@ package main.java.com.mycompany.hms;
 import java.nio.file.Paths;
 import java.sql.*;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.sql.Timestamp;
+import javax.swing.JComboBox;
 
 public class doctor {
     private String DBSLocation;
@@ -167,7 +168,29 @@ public void viewData() {
 
 
 
+public String getOption() {
+    // Define the options for the JComboBox
+    String[] options = {"S1", "S2", "S3", "S4", "S5", "S6", "S7"};
 
+    // Create a JComboBox with these options
+    JComboBox<String> comboBox = new JComboBox<>(options);
+
+    // Show the JOptionPane with the JComboBox
+    int result = JOptionPane.showConfirmDialog(null, comboBox, "Select an Option", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+    // Declare the variable outside the if block
+    String selectedOption = null;
+
+    // Check if the user clicked OK
+    if (result == JOptionPane.OK_OPTION) {
+        // Get the selected item
+        selectedOption = (String) comboBox.getSelectedItem();
+    } else {
+        JOptionPane.showMessageDialog(null, "No option selected.");
+    }
+
+    return selectedOption;
+}
 
 
   
