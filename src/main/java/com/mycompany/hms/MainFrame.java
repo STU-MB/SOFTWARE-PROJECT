@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.sql.*;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -3708,8 +3709,54 @@ public static String user;
         String Nurse = jTextField12.getText();
         String Patient = jTextField10.getText();
         String Slot = (String)slotNumberCombo.getSelectedItem();
-        String insertSQL = "INSERT INTO Appointments (SlotNum, StartTime, PatientCode. NurseCode, DoctorCode, Completed, RoomNumber";
+        String RoomNumber ;//fetch patient room number
+        String insertSQL = "UPDATE Appointments SET StartTime = ?, PatientCode = ?, NurseCode = ?, DoctorCode = ?, Completed = ?, RoomNumber = ? WHERE SlotNum = ?";
         
+        DataValidation d = new DataValidation(Doctor);
+        
+                    Time StartTime = slotToTime(Slot);
+                    boolean completed = false;
+                    try{
+                        Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
+                        String pullRoomNumber = "SELECT RoomNumber FROM Patients WHERE ID = '" + Patient + "'";
+                        String checkDoctor= "SELECT ID FROM Doctors WHERE ID = '" + Doctor + "'";
+                        //String checkPatient = "SELECT ID FROM Patients WHERE ID = '" + Patient + "'";
+                        String checkNurse = "SELECT ID FROM Nurses WHERE ID = '" + Nurse + "'";
+                        
+                        Statement s = c.createStatement();
+                        ResultSet rsRoomNumber = s.executeQuery(pullRoomNumber);
+                        
+                        Statement sDoctor = c.createStatement();
+                        ResultSet rsDoctor = sDoctor.executeQuery(checkDoctor);
+                        
+                        Statement sNurse = c.createStatement();
+                        ResultSet rsNurse = sNurse.executeQuery(checkNurse);
+                        
+                        if(rsRoomNumber.next()){
+                            if(rsDoctor.next()){
+                                if(rsNurse.next()){
+                                    RoomNumber = rsRoomNumber.getString("RoomNumber");
+                                    PreparedStatement psmt = c.prepareStatement(insertSQL);
+                                    psmt.setTime(1, StartTime);
+                                    psmt.setString(2, Patient);
+                                    psmt.setString(3, Nurse);
+                                    psmt.setString(4, Doctor);
+                                    psmt.setBoolean(5, completed);
+                                    psmt.setString(6, RoomNumber);
+                                    psmt.setString(7, Slot);
+                                    
+                                    psmt.executeUpdate();
+                                }JOptionPane.showMessageDialog(this, "Please enter a valid Nurse ID");
+                            }JOptionPane.showMessageDialog(this, "Please enter a valid Doctor ID");
+                            
+                        }else JOptionPane.showMessageDialog(this, "Please enter a valid Patient ID");
+                        
+                    }catch(SQLException e){
+                        JOptionPane.showMessageDialog(this, e);
+                    }
+                    
+                    
+                
     }//GEN-LAST:event_capsuleButton21ActionPerformed
 int x = 1;
     private void capsuleButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton11ActionPerformed
