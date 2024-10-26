@@ -8,6 +8,7 @@ import com.formdev.flatlaf.*;
 import java.awt.*;
 import java.nio.file.Paths;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,6 +20,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.TableModelEvent;
+import javax.swing.table.DefaultTableModel;
 import main.java.com.mycompany.hms.DataValidation;
 
 /**
@@ -236,8 +238,8 @@ public class MainFrame extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
         capsuleButton12 = new main.java.com.mycompany.hms.CapsuleButton();
+        capsuleButton16 = new main.java.com.mycompany.hms.CapsuleButton();
         capsuleButton7 = new main.java.com.mycompany.hms.CapsuleButton();
         jLabel19 = new javax.swing.JLabel();
         doctorPanel = new javax.swing.JPanel();
@@ -303,6 +305,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         nurseDetCond = new javax.swing.JTable();
+        capsuleButton43 = new main.java.com.mycompany.hms.CapsuleButton();
         healthVisitorPanel = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
@@ -719,7 +722,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(appointmentAddLayout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addComponent(capsuleButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         appointmentAddLayout.setVerticalGroup(
             appointmentAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1748,6 +1751,11 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton11.setcolorDefualt(new java.awt.Color(204, 204, 204));
         capsuleButton11.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton11.setcolorPressed(java.awt.Color.gray);
+        capsuleButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton11ActionPerformed(evt);
+            }
+        });
 
         capsuleButton14.setText("LOGIN");
         capsuleButton14.setcolorDefualt(java.awt.SystemColor.activeCaptionBorder);
@@ -1825,11 +1833,8 @@ public class MainFrame extends javax.swing.JFrame {
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addComponent(jLabel31)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                        .addComponent(capsuleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                         .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(464, 464, 464))
@@ -1838,15 +1843,18 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(441, 441, 441))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(485, 485, 485))))
+                        .addGap(485, 485, 485))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                        .addComponent(capsuleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(capsuleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121)
+                .addComponent(capsuleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
                 .addComponent(jLabel1)
                 .addGap(46, 46, 46)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1886,27 +1894,27 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel9.setText("Password:");
 
-        jToggleButton2.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
-        jToggleButton2.setText("LOGIN");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
-            }
-        });
-
         capsuleButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Images/PasswordSeeBlack.png"))); // NOI18N
         capsuleButton12.setcolorDefualt(new java.awt.Color(204, 204, 204));
         capsuleButton12.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton12.setcolorPressed(java.awt.Color.gray);
+        capsuleButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton12ActionPerformed(evt);
+            }
+        });
+
+        capsuleButton16.setText("capsuleButton16");
+        capsuleButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton16ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
         panelRound2.setLayout(panelRound2Layout);
         panelRound2Layout.setHorizontalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(189, 189, 189))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1919,6 +1927,10 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(capsuleButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(capsuleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(205, 205, 205))
         );
         panelRound2Layout.setVerticalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1933,13 +1945,12 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(capsuleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelRound2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(capsuleButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)))
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(capsuleButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         capsuleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Images/BackButtonSmall.png"))); // NOI18N
@@ -1975,7 +1986,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(adminLoginLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(capsuleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addContainerGap(464, Short.MAX_VALUE))
         );
         adminLoginLayout.setVerticalGroup(
             adminLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2835,6 +2846,17 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
+        capsuleButton43.setText("Log Out");
+        capsuleButton43.setcolorDefualt(new java.awt.Color(204, 204, 204));
+        capsuleButton43.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
+        capsuleButton43.setcolorPressed(java.awt.Color.gray);
+        capsuleButton43.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        capsuleButton43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton16ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout nursePanelLayout = new javax.swing.GroupLayout(nursePanel);
         nursePanel.setLayout(nursePanelLayout);
         nursePanelLayout.setHorizontalGroup(
@@ -2843,29 +2865,36 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(nursePanelLayout.createSequentialGroup()
                         .addGap(84, 84, 84)
-                        .addComponent(jLabel15))
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(capsuleButton43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(nursePanelLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(nursePanelLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(panelRound7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105)
-                        .addComponent(panelRound9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                        .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(nursePanelLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(nursePanelLayout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(panelRound7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addComponent(panelRound9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 109, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         nursePanelLayout.setVerticalGroup(
             nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(nursePanelLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(capsuleButton43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
                 .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelRound7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelRound9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         Parent.add(nursePanel, "card7");
@@ -3189,12 +3218,10 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
-
     private void capsuleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton7ActionPerformed
-        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) Parent.getLayout();
+        Parent.add(loginPanel,"loginPanel");
+        cl.show(Parent,"loginPanel");// TODO add your handling code here:         // TODO add your handling code here:
     }//GEN-LAST:event_capsuleButton7ActionPerformed
 
     private void capsuleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton8ActionPerformed
@@ -3296,10 +3323,37 @@ public class MainFrame extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(appointmentAdd);
         appointmentAdd.setLocationRelativeTo(this);
         appointmentAdd.setVisible(true);
+        
     }//GEN-LAST:event_capsuleButton22ActionPerformed
 
     private void capsuleButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton23ActionPerformed
-        // TODO add your handling code here:
+      //delete button
+        doctor d = new doctor(url);
+       String SlotNum = d.getOption();
+       
+      
+    String deleteSQL = "DELETE FROM Appointments WHERE SlotNum = ?";
+
+    try (Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
+         PreparedStatement pstmt = c.prepareStatement(deleteSQL)) {
+
+        // Set the SlotNum parameter
+        pstmt.setString(1, SlotNum);
+
+        // Execute the delete statement
+        int rowsDeleted = pstmt.executeUpdate();
+
+        if (rowsDeleted > 0) {
+            JOptionPane.showMessageDialog(this, "Appointment deleted successfully!");
+        } else {
+            JOptionPane.showMessageDialog(this, "No appointment found with the specified SlotNum.");
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error deleting appointment: " + e.getMessage());
+    }
+
+
     }//GEN-LAST:event_capsuleButton23ActionPerformed
 
     private void capsuleButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton24ActionPerformed
@@ -3323,7 +3377,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_capsuleButton27ActionPerformed
 
     private void capsuleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton2ActionPerformed
-        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) Parent.getLayout();
+        Parent.add(adminLogin,"adminLogin");
+        cl.show(Parent,"adminLogin");// TODO add your handling code here:
     }//GEN-LAST:event_capsuleButton2ActionPerformed
 public static String user;
     private void capsuleButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton14ActionPerformed
@@ -3331,10 +3387,10 @@ public static String user;
         CardLayout cardLayout = (CardLayout) Parent.getLayout();
         
         Parent.add(doctorPanel, "doctorPanel");
-        user = uText.getText();
+       
         
         if(uText.getText().equals("D007") && (String.valueOf(pText.getPassword()).equals("sally5")) || (String.valueOf(pText.getPassword()).equals("d"))){
-            
+            user = uText.getText();
             cardLayout.show(Parent,"doctorPanel");
             doctor d = new doctor(url);
             d.setUser(user);
@@ -3344,10 +3400,12 @@ public static String user;
             d.setTable(jTable1);
             d.viewData();
         }
-        if(uText.getText().equals("N") && String.valueOf(pText.getPassword()).equals("n")){
+        if(String.valueOf(pText.getPassword()).equals("n")){
             Parent.add(nursePanel, "nursePanel");
             cardLayout.show(Parent,"nursePanel");
             Nurse n = new Nurse(url);
+            user = uText.getText();
+            jLabel15.setText("Welcome "+n.getUser(user));
             n.setTable(nursePatientsTable);
             n.viewAllAppointments("N001");
             
@@ -3716,61 +3774,102 @@ public static String user;
 
     private void capsuleButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton21ActionPerformed
         String Doctor = jTextField11.getText();
-        String Nurse = jTextField12.getText();
-        String Patient = jTextField10.getText();
-        String Slot = (String)slotNumberCombo.getSelectedItem();
-        String RoomNumber ;//fetch patient room number
-        String insertSQL = "UPDATE Appointments SET StartTime = ?, PatientCode = ?, NurseCode = ?, DoctorCode = ?, Completed = ?, RoomNumber = ? WHERE SlotNum = ?";
-        
-        DataValidation d = new DataValidation(Doctor);
-        
-                    Time StartTime = slotToTime(Slot);
-                    boolean completed = false;
-                    try{
-                        Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
-                        String pullRoomNumber = "SELECT RoomNumber FROM Patients WHERE ID = '" + Patient + "'";
-                        String checkDoctor= "SELECT ID FROM Doctors WHERE ID = '" + Doctor + "'";
-                        //String checkPatient = "SELECT ID FROM Patients WHERE ID = '" + Patient + "'";
-                        String checkNurse = "SELECT ID FROM Nurses WHERE ID = '" + Nurse + "'";
-                        
-                        Statement s = c.createStatement();
-                        ResultSet rsRoomNumber = s.executeQuery(pullRoomNumber);
-                        
-                        Statement sDoctor = c.createStatement();
-                        ResultSet rsDoctor = sDoctor.executeQuery(checkDoctor);
-                        
-                        Statement sNurse = c.createStatement();
-                        ResultSet rsNurse = sNurse.executeQuery(checkNurse);
-                        
-                        if(rsRoomNumber.next()){
-                            if(rsDoctor.next()){
-                                if(rsNurse.next()){
-                                    RoomNumber = rsRoomNumber.getString("RoomNumber");
-                                    PreparedStatement psmt = c.prepareStatement(insertSQL);
-                                    psmt.setTime(1, StartTime);
-                                    psmt.setString(2, Patient);
-                                    psmt.setString(3, Nurse);
-                                    psmt.setString(4, Doctor);
-                                    psmt.setBoolean(5, completed);
-                                    psmt.setString(6, RoomNumber);
-                                    psmt.setString(7, Slot);
-                                    
-                                    psmt.executeUpdate();
-                                }else JOptionPane.showMessageDialog(this, "Please enter a valid Nurse ID");
-                            }else JOptionPane.showMessageDialog(this, "Please enter a valid Doctor ID");
-                            
-                        }else JOptionPane.showMessageDialog(this, "Please enter a valid Patient ID");
-                        
-                    }catch(SQLException e){
-                        JOptionPane.showMessageDialog(this, e);
-                    }
-                    
-                  doctor d2 = new doctor(url);
-                  d2.setUser(user);
-                  d2.setTable(jTable1);
-                  d2.viewData();
-                
+    String Nurse = jTextField12.getText();
+    String Patient = jTextField10.getText();
+    String Slot = (String) slotNumberCombo.getSelectedItem();
+    String RoomNumber = null; 
+    String insertSQL = "UPDATE Appointments SET StartTime = ?, PatientCode = ?, NurseCode = ?, DoctorCode = ?, Completed = ?, RoomNumber = ? WHERE SlotNum = ?";
+
+    Time StartTime = slotToTime(Slot);
+    boolean completed = false;
+
+    try (Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
+         Statement s = c.createStatement()) {
+
+        String pullRoomNumber = "SELECT RoomNumber FROM Patients WHERE ID = ?";
+        try (PreparedStatement pstmtRoom = c.prepareStatement(pullRoomNumber)) {
+            pstmtRoom.setString(1, Patient);
+            ResultSet rsRoomNumber = pstmtRoom.executeQuery();
+
+            if (rsRoomNumber.next()) {
+                RoomNumber = rsRoomNumber.getString("RoomNumber");
+            } else {
+                JOptionPane.showMessageDialog(this, "Please enter a valid Patient ID");
+                return;
+            }
+        }
+
+        String checkDoctor = "SELECT ID FROM Doctors WHERE ID = ?";
+        try (PreparedStatement pstmtDoctor = c.prepareStatement(checkDoctor)) {
+            pstmtDoctor.setString(1, Doctor);
+            ResultSet rsDoctor = pstmtDoctor.executeQuery();
+
+            if (!rsDoctor.next()) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid Doctor ID");
+                return;
+            }
+        }
+
+        String checkNurse = "SELECT ID FROM Nurses WHERE ID = ?";
+        try (PreparedStatement pstmtNurse = c.prepareStatement(checkNurse)) {
+            pstmtNurse.setString(1, Nurse);
+            ResultSet rsNurse = pstmtNurse.executeQuery();
+
+            if (!rsNurse.next()) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid Nurse ID");
+                return;
+            }
+        }
+
+        try (PreparedStatement psmt = c.prepareStatement(insertSQL)) {
+            psmt.setTime(1, StartTime);
+            psmt.setString(2, Patient);
+            psmt.setString(3, Nurse);
+            psmt.setString(4, Doctor);
+            psmt.setBoolean(5, completed);
+            psmt.setString(6, RoomNumber);
+            psmt.setString(7, Slot);
+
+            int rowsUpdated = psmt.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(this, "Appointment updated successfully!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to update the appointment.");
+            }
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+      
+      refresh();
     }//GEN-LAST:event_capsuleButton21ActionPerformed
+int x = 1;
+    private void capsuleButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton11ActionPerformed
+       if (x == 1){ 
+        pText.setEchoChar((char) 0); // Show password   
+        x *= -1;
+       }else if(x == -1){         
+         pText.setEchoChar('•'); // Hide password
+         x *= -1;
+       }                           
+    }//GEN-LAST:event_capsuleButton11ActionPerformed
+int y = 1;
+    private void capsuleButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton12ActionPerformed
+       if (y == 1){ 
+        jPasswordField2.setEchoChar((char) 0); // Show password   
+        y *= -1;
+       }else if(y == -1){         
+         jPasswordField2.setEchoChar('•'); // Hide password
+         y *= -1;
+       }  
+    }//GEN-LAST:event_capsuleButton12ActionPerformed
+
+    private void capsuleButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton16ActionPerformed
+        // TODO add your handling code here://admin login
+        loginPanel.setVisible(true);
+         nursePanel.setVisible(false);
+    }//GEN-LAST:event_capsuleButton16ActionPerformed
 
     private void capsuleButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton30ActionPerformed
        String name = jTextField13.getText();
@@ -3874,6 +3973,17 @@ public static String user;
             }
         });
     }
+   public void refresh() {
+       doctor d = new doctor(url);
+       String[] columnNames = {"Surname", "Name", "Room Number", "Time", "Completed"};
+       DefaultTableModel emptyModel = new DefaultTableModel(columnNames, 0);
+       jTable1.setModel(emptyModel); // Sets an entirely new empty model
+       d.setTable(jTable1);
+       d.viewData();
+    // Define the column names
+    
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Appointments;
@@ -3895,6 +4005,7 @@ public static String user;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton13;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton14;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton15;
+    private main.java.com.mycompany.hms.CapsuleButton capsuleButton16;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton17;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton18;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton19;
@@ -3924,6 +4035,7 @@ public static String user;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton40;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton41;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton42;
+    private main.java.com.mycompany.hms.CapsuleButton capsuleButton43;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton5;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton6;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton7;
@@ -4069,7 +4181,6 @@ public static String user;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JDialog nurseAdd;
     private javax.swing.JTable nurseDetCond;
