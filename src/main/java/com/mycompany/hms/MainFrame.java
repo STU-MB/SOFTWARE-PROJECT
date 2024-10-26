@@ -8,6 +8,7 @@ import com.formdev.flatlaf.*;
 import java.awt.*;
 import java.nio.file.Paths;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,6 +20,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.TableModelEvent;
+import javax.swing.table.DefaultTableModel;
 import main.java.com.mycompany.hms.DataValidation;
 
 /**
@@ -720,7 +722,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(appointmentAddLayout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addComponent(capsuleButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         appointmentAddLayout.setVerticalGroup(
             appointmentAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3305,10 +3307,37 @@ public class MainFrame extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(appointmentAdd);
         appointmentAdd.setLocationRelativeTo(this);
         appointmentAdd.setVisible(true);
+        
     }//GEN-LAST:event_capsuleButton22ActionPerformed
 
     private void capsuleButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton23ActionPerformed
-        // TODO add your handling code here:
+      //delete button
+        doctor d = new doctor(url);
+       String SlotNum = d.getOption();
+       
+      
+    String deleteSQL = "DELETE FROM Appointments WHERE SlotNum = ?";
+
+    try (Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
+         PreparedStatement pstmt = c.prepareStatement(deleteSQL)) {
+
+        // Set the SlotNum parameter
+        pstmt.setString(1, SlotNum);
+
+        // Execute the delete statement
+        int rowsDeleted = pstmt.executeUpdate();
+
+        if (rowsDeleted > 0) {
+            JOptionPane.showMessageDialog(this, "Appointment deleted successfully!");
+        } else {
+            JOptionPane.showMessageDialog(this, "No appointment found with the specified SlotNum.");
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error deleting appointment: " + e.getMessage());
+    }
+
+
     }//GEN-LAST:event_capsuleButton23ActionPerformed
 
     private void capsuleButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton24ActionPerformed
@@ -3727,57 +3756,75 @@ public static String user;
 
     private void capsuleButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton21ActionPerformed
         String Doctor = jTextField11.getText();
-        String Nurse = jTextField12.getText();
-        String Patient = jTextField10.getText();
-        String Slot = (String)slotNumberCombo.getSelectedItem();
-        String RoomNumber ;//fetch patient room number
-        String insertSQL = "UPDATE Appointments SET StartTime = ?, PatientCode = ?, NurseCode = ?, DoctorCode = ?, Completed = ?, RoomNumber = ? WHERE SlotNum = ?";
-        
-        DataValidation d = new DataValidation(Doctor);
-        
-                    Time StartTime = slotToTime(Slot);
-                    boolean completed = false;
-                    try{
-                        Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
-                        String pullRoomNumber = "SELECT RoomNumber FROM Patients WHERE ID = '" + Patient + "'";
-                        String checkDoctor= "SELECT ID FROM Doctors WHERE ID = '" + Doctor + "'";
-                        //String checkPatient = "SELECT ID FROM Patients WHERE ID = '" + Patient + "'";
-                        String checkNurse = "SELECT ID FROM Nurses WHERE ID = '" + Nurse + "'";
-                        
-                        Statement s = c.createStatement();
-                        ResultSet rsRoomNumber = s.executeQuery(pullRoomNumber);
-                        
-                        Statement sDoctor = c.createStatement();
-                        ResultSet rsDoctor = sDoctor.executeQuery(checkDoctor);
-                        
-                        Statement sNurse = c.createStatement();
-                        ResultSet rsNurse = sNurse.executeQuery(checkNurse);
-                        
-                        if(rsRoomNumber.next()){
-                            if(rsDoctor.next()){
-                                if(rsNurse.next()){
-                                    RoomNumber = rsRoomNumber.getString("RoomNumber");
-                                    PreparedStatement psmt = c.prepareStatement(insertSQL);
-                                    psmt.setTime(1, StartTime);
-                                    psmt.setString(2, Patient);
-                                    psmt.setString(3, Nurse);
-                                    psmt.setString(4, Doctor);
-                                    psmt.setBoolean(5, completed);
-                                    psmt.setString(6, RoomNumber);
-                                    psmt.setString(7, Slot);
-                                    
-                                    psmt.executeUpdate();
-                                }JOptionPane.showMessageDialog(this, "Please enter a valid Nurse ID");
-                            }JOptionPane.showMessageDialog(this, "Please enter a valid Doctor ID");
-                            
-                        }else JOptionPane.showMessageDialog(this, "Please enter a valid Patient ID");
-                        
-                    }catch(SQLException e){
-                        JOptionPane.showMessageDialog(this, e);
-                    }
-                    
-                    
-                
+    String Nurse = jTextField12.getText();
+    String Patient = jTextField10.getText();
+    String Slot = (String) slotNumberCombo.getSelectedItem();
+    String RoomNumber = null; 
+    String insertSQL = "UPDATE Appointments SET StartTime = ?, PatientCode = ?, NurseCode = ?, DoctorCode = ?, Completed = ?, RoomNumber = ? WHERE SlotNum = ?";
+
+    Time StartTime = slotToTime(Slot);
+    boolean completed = false;
+
+    try (Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
+         Statement s = c.createStatement()) {
+
+        String pullRoomNumber = "SELECT RoomNumber FROM Patients WHERE ID = ?";
+        try (PreparedStatement pstmtRoom = c.prepareStatement(pullRoomNumber)) {
+            pstmtRoom.setString(1, Patient);
+            ResultSet rsRoomNumber = pstmtRoom.executeQuery();
+
+            if (rsRoomNumber.next()) {
+                RoomNumber = rsRoomNumber.getString("RoomNumber");
+            } else {
+                JOptionPane.showMessageDialog(this, "Please enter a valid Patient ID");
+                return;
+            }
+        }
+
+        String checkDoctor = "SELECT ID FROM Doctors WHERE ID = ?";
+        try (PreparedStatement pstmtDoctor = c.prepareStatement(checkDoctor)) {
+            pstmtDoctor.setString(1, Doctor);
+            ResultSet rsDoctor = pstmtDoctor.executeQuery();
+
+            if (!rsDoctor.next()) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid Doctor ID");
+                return;
+            }
+        }
+
+        String checkNurse = "SELECT ID FROM Nurses WHERE ID = ?";
+        try (PreparedStatement pstmtNurse = c.prepareStatement(checkNurse)) {
+            pstmtNurse.setString(1, Nurse);
+            ResultSet rsNurse = pstmtNurse.executeQuery();
+
+            if (!rsNurse.next()) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid Nurse ID");
+                return;
+            }
+        }
+
+        try (PreparedStatement psmt = c.prepareStatement(insertSQL)) {
+            psmt.setTime(1, StartTime);
+            psmt.setString(2, Patient);
+            psmt.setString(3, Nurse);
+            psmt.setString(4, Doctor);
+            psmt.setBoolean(5, completed);
+            psmt.setString(6, RoomNumber);
+            psmt.setString(7, Slot);
+
+            int rowsUpdated = psmt.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(this, "Appointment updated successfully!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to update the appointment.");
+            }
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+      
+      refresh();
     }//GEN-LAST:event_capsuleButton21ActionPerformed
 int x = 1;
     private void capsuleButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton11ActionPerformed
@@ -3871,6 +3918,17 @@ int y = 1;
             }
         });
     }
+   public void refresh() {
+       doctor d = new doctor(url);
+       String[] columnNames = {"Surname", "Name", "Room Number", "Time", "Completed"};
+       DefaultTableModel emptyModel = new DefaultTableModel(columnNames, 0);
+       jTable1.setModel(emptyModel); // Sets an entirely new empty model
+       d.setTable(jTable1);
+       d.viewData();
+    // Define the column names
+    
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Appointments;
