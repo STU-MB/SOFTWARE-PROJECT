@@ -7,6 +7,7 @@ package main.java.com.mycompany.hms;
 
 import java.nio.file.Paths;
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 public class Nurse {
@@ -126,6 +127,41 @@ public class Nurse {
     }
 }
 
-    
+     public String getUser(String user){
+      
+      String query = "SELECT * FROM Nurses";
+      String name = "";
+      try {
+          
+        conn = DriverManager.getConnection(DBSLocation);
+        s = conn.createStatement();
+        rs = s.executeQuery(query);
+        
+        while (rs.next()) {          
+        
+          if (user.equals(rs.getString("ID"))){
+             name = rs.getString("Name") +" "+ rs.getString("Surname");
+          }  
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error loading data: " + e.getMessage());
+    } finally {
+        // Clean up resources
+        try {
+            if (rs != null) rs.close();
+            if (s != null) s.close();
+            if (conn != null) conn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error closing connection: " + e.getMessage());
+        }
+      
+      }
+      return name;
+  }
+String user;
+  public void setUser(String s){
+      user = s;
+      
+  }
 }
 

@@ -302,6 +302,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         nurseDetCond = new javax.swing.JTable();
+        capsuleButton16 = new main.java.com.mycompany.hms.CapsuleButton();
         healthVisitorPanel = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
@@ -960,7 +961,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(doctorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         capsuleButton28.setText("ADD");
@@ -2818,6 +2819,17 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
+        capsuleButton16.setText("Log Out");
+        capsuleButton16.setcolorDefualt(new java.awt.Color(204, 204, 204));
+        capsuleButton16.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
+        capsuleButton16.setcolorPressed(java.awt.Color.gray);
+        capsuleButton16.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        capsuleButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton16ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout nursePanelLayout = new javax.swing.GroupLayout(nursePanel);
         nursePanel.setLayout(nursePanelLayout);
         nursePanelLayout.setHorizontalGroup(
@@ -2826,29 +2838,36 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(nursePanelLayout.createSequentialGroup()
                         .addGap(84, 84, 84)
-                        .addComponent(jLabel15))
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(capsuleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(nursePanelLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(nursePanelLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(panelRound7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105)
-                        .addComponent(panelRound9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                        .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(nursePanelLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(nursePanelLayout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(panelRound7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addComponent(panelRound9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 109, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         nursePanelLayout.setVerticalGroup(
             nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(nursePanelLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(capsuleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
                 .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelRound7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelRound9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         Parent.add(nursePanel, "card7");
@@ -3314,10 +3333,10 @@ public static String user;
         CardLayout cardLayout = (CardLayout) Parent.getLayout();
         
         Parent.add(doctorPanel, "doctorPanel");
-        user = uText.getText();
+       
         
         if(uText.getText().equals("D007") && (String.valueOf(pText.getPassword()).equals("sally5")) || (String.valueOf(pText.getPassword()).equals("d"))){
-            
+            user = uText.getText();
             cardLayout.show(Parent,"doctorPanel");
             doctor d = new doctor(url);
             d.setUser(user);
@@ -3327,10 +3346,12 @@ public static String user;
             d.setTable(jTable1);
             d.viewData();
         }
-        if(uText.getText().equals("N") && String.valueOf(pText.getPassword()).equals("n")){
+        if(String.valueOf(pText.getPassword()).equals("n")){
             Parent.add(nursePanel, "nursePanel");
             cardLayout.show(Parent,"nursePanel");
             Nurse n = new Nurse(url);
+            user = uText.getText();
+            jLabel15.setText("Welcome "+n.getUser(user));
             n.setTable(nursePatientsTable);
             n.viewAllAppointments("N001");
             
@@ -3703,6 +3724,11 @@ public static String user;
         String insertSQL = "INSERT INTO Appointments (SlotNum, StartTime, PatientCode. NurseCode, DoctorCode, Completed, RoomNumber";
         
     }//GEN-LAST:event_capsuleButton21ActionPerformed
+
+    private void capsuleButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton16ActionPerformed
+ loginPanel.setVisible(true);
+         nursePanel.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_capsuleButton16ActionPerformed
      
     public Time slotToTime(String slot){
         LocalTime time;
@@ -3790,6 +3816,7 @@ public static String user;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton13;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton14;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton15;
+    private main.java.com.mycompany.hms.CapsuleButton capsuleButton16;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton17;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton18;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton19;
