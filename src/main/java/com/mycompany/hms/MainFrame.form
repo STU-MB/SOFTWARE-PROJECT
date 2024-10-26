@@ -2316,12 +2316,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="234" max="32767" attributes="0"/>
+                      <EmptySpace pref="235" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="capsuleButton2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="panelRound1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="464" max="-2" attributes="0"/>
@@ -2334,6 +2330,10 @@
                               <Component id="jLabel1" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="485" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="capsuleButton2" min="-2" pref="167" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -2343,8 +2343,8 @@
                   <Component id="jLabel31" alignment="1" min="-2" pref="813" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="capsuleButton2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                      <Component id="capsuleButton2" min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -2475,6 +2475,9 @@
                       <Color blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capsuleButton11ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="main.java.com.mycompany.hms.CapsuleButton" name="capsuleButton14">
                   <Properties>
@@ -2576,7 +2579,7 @@
                               <Component id="capsuleButton7" min="-2" pref="79" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="463" max="32767" attributes="0"/>
+                      <EmptySpace pref="464" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2634,11 +2637,6 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jToggleButton2" min="-2" pref="152" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel9" alignment="0" pref="175" max="32767" attributes="0"/>
@@ -2652,6 +2650,11 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="capsuleButton12" min="-2" pref="44" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="capsuleButton16" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2670,16 +2673,15 @@
                                       <Component id="jLabel9" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                                       <Component id="jPasswordField2" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="capsuleButton16" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="capsuleButton12" min="-2" pref="29" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jToggleButton2" min="-2" pref="53" max="-2" attributes="0"/>
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                          <EmptySpace pref="52" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2721,17 +2723,6 @@
                     <Property name="text" type="java.lang.String" value="Password:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JToggleButton" name="jToggleButton2">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Century Gothic" size="30" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="LOGIN"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton2ActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="main.java.com.mycompany.hms.CapsuleButton" name="capsuleButton12">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -2747,6 +2738,17 @@
                       <Color blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capsuleButton12ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="main.java.com.mycompany.hms.CapsuleButton" name="capsuleButton16">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="capsuleButton16"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capsuleButton16ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -4061,7 +4063,7 @@
                               <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="capsuleButton16" min="-2" max="-2" attributes="0"/>
+                              <Component id="capsuleButton43" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -4089,7 +4091,7 @@
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="capsuleButton16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="capsuleButton43" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
@@ -4323,7 +4325,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Component class="main.java.com.mycompany.hms.CapsuleButton" name="capsuleButton16">
+            <Component class="main.java.com.mycompany.hms.CapsuleButton" name="capsuleButton43">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Log Out"/>
                 <Property name="colorDefualt" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

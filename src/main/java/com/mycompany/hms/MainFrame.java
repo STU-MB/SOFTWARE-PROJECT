@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.sql.*;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -235,8 +236,8 @@ public class MainFrame extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
         capsuleButton12 = new main.java.com.mycompany.hms.CapsuleButton();
+        capsuleButton16 = new main.java.com.mycompany.hms.CapsuleButton();
         capsuleButton7 = new main.java.com.mycompany.hms.CapsuleButton();
         jLabel19 = new javax.swing.JLabel();
         doctorPanel = new javax.swing.JPanel();
@@ -302,7 +303,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         nurseDetCond = new javax.swing.JTable();
-        capsuleButton16 = new main.java.com.mycompany.hms.CapsuleButton();
+        capsuleButton43 = new main.java.com.mycompany.hms.CapsuleButton();
         healthVisitorPanel = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
@@ -1737,6 +1738,11 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton11.setcolorDefualt(new java.awt.Color(204, 204, 204));
         capsuleButton11.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton11.setcolorPressed(java.awt.Color.gray);
+        capsuleButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton11ActionPerformed(evt);
+            }
+        });
 
         capsuleButton14.setText("LOGIN");
         capsuleButton14.setcolorDefualt(java.awt.SystemColor.activeCaptionBorder);
@@ -1814,11 +1820,8 @@ public class MainFrame extends javax.swing.JFrame {
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addComponent(jLabel31)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                        .addComponent(capsuleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                         .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(464, 464, 464))
@@ -1827,15 +1830,18 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(441, 441, 441))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(485, 485, 485))))
+                        .addGap(485, 485, 485))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                        .addComponent(capsuleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(capsuleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121)
+                .addComponent(capsuleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
                 .addComponent(jLabel1)
                 .addGap(46, 46, 46)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1875,27 +1881,27 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel9.setText("Password:");
 
-        jToggleButton2.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
-        jToggleButton2.setText("LOGIN");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
-            }
-        });
-
         capsuleButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Images/PasswordSeeBlack.png"))); // NOI18N
         capsuleButton12.setcolorDefualt(new java.awt.Color(204, 204, 204));
         capsuleButton12.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton12.setcolorPressed(java.awt.Color.gray);
+        capsuleButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton12ActionPerformed(evt);
+            }
+        });
+
+        capsuleButton16.setText("capsuleButton16");
+        capsuleButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton16ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
         panelRound2.setLayout(panelRound2Layout);
         panelRound2Layout.setHorizontalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(189, 189, 189))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1908,6 +1914,10 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(capsuleButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(capsuleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(205, 205, 205))
         );
         panelRound2Layout.setVerticalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1922,13 +1932,12 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(capsuleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelRound2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(capsuleButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)))
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(capsuleButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         capsuleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Images/BackButtonSmall.png"))); // NOI18N
@@ -1964,7 +1973,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(adminLoginLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(capsuleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addContainerGap(464, Short.MAX_VALUE))
         );
         adminLoginLayout.setVerticalGroup(
             adminLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2819,12 +2828,12 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        capsuleButton16.setText("Log Out");
-        capsuleButton16.setcolorDefualt(new java.awt.Color(204, 204, 204));
-        capsuleButton16.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
-        capsuleButton16.setcolorPressed(java.awt.Color.gray);
-        capsuleButton16.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        capsuleButton16.addActionListener(new java.awt.event.ActionListener() {
+        capsuleButton43.setText("Log Out");
+        capsuleButton43.setcolorDefualt(new java.awt.Color(204, 204, 204));
+        capsuleButton43.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
+        capsuleButton43.setcolorPressed(java.awt.Color.gray);
+        capsuleButton43.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        capsuleButton43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 capsuleButton16ActionPerformed(evt);
             }
@@ -2840,7 +2849,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(84, 84, 84)
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(capsuleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(capsuleButton43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(nursePanelLayout.createSequentialGroup()
                         .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(nursePanelLayout.createSequentialGroup()
@@ -2860,7 +2869,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(capsuleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(capsuleButton43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
@@ -3191,12 +3200,10 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
-
     private void capsuleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton7ActionPerformed
-        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) Parent.getLayout();
+        Parent.add(loginPanel,"loginPanel");
+        cl.show(Parent,"loginPanel");// TODO add your handling code here:         // TODO add your handling code here:
     }//GEN-LAST:event_capsuleButton7ActionPerformed
 
     private void capsuleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton8ActionPerformed
@@ -3325,7 +3332,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_capsuleButton27ActionPerformed
 
     private void capsuleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton2ActionPerformed
-        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) Parent.getLayout();
+        Parent.add(adminLogin,"adminLogin");
+        cl.show(Parent,"adminLogin");// TODO add your handling code here:
     }//GEN-LAST:event_capsuleButton2ActionPerformed
 public static String user;
     private void capsuleButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton14ActionPerformed
@@ -3721,13 +3730,80 @@ public static String user;
         String Nurse = jTextField12.getText();
         String Patient = jTextField10.getText();
         String Slot = (String)slotNumberCombo.getSelectedItem();
-        String insertSQL = "INSERT INTO Appointments (SlotNum, StartTime, PatientCode. NurseCode, DoctorCode, Completed, RoomNumber";
+        String RoomNumber ;//fetch patient room number
+        String insertSQL = "UPDATE Appointments SET StartTime = ?, PatientCode = ?, NurseCode = ?, DoctorCode = ?, Completed = ?, RoomNumber = ? WHERE SlotNum = ?";
         
+        DataValidation d = new DataValidation(Doctor);
+        
+                    Time StartTime = slotToTime(Slot);
+                    boolean completed = false;
+                    try{
+                        Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
+                        String pullRoomNumber = "SELECT RoomNumber FROM Patients WHERE ID = '" + Patient + "'";
+                        String checkDoctor= "SELECT ID FROM Doctors WHERE ID = '" + Doctor + "'";
+                        //String checkPatient = "SELECT ID FROM Patients WHERE ID = '" + Patient + "'";
+                        String checkNurse = "SELECT ID FROM Nurses WHERE ID = '" + Nurse + "'";
+                        
+                        Statement s = c.createStatement();
+                        ResultSet rsRoomNumber = s.executeQuery(pullRoomNumber);
+                        
+                        Statement sDoctor = c.createStatement();
+                        ResultSet rsDoctor = sDoctor.executeQuery(checkDoctor);
+                        
+                        Statement sNurse = c.createStatement();
+                        ResultSet rsNurse = sNurse.executeQuery(checkNurse);
+                        
+                        if(rsRoomNumber.next()){
+                            if(rsDoctor.next()){
+                                if(rsNurse.next()){
+                                    RoomNumber = rsRoomNumber.getString("RoomNumber");
+                                    PreparedStatement psmt = c.prepareStatement(insertSQL);
+                                    psmt.setTime(1, StartTime);
+                                    psmt.setString(2, Patient);
+                                    psmt.setString(3, Nurse);
+                                    psmt.setString(4, Doctor);
+                                    psmt.setBoolean(5, completed);
+                                    psmt.setString(6, RoomNumber);
+                                    psmt.setString(7, Slot);
+                                    
+                                    psmt.executeUpdate();
+                                }JOptionPane.showMessageDialog(this, "Please enter a valid Nurse ID");
+                            }JOptionPane.showMessageDialog(this, "Please enter a valid Doctor ID");
+                            
+                        }else JOptionPane.showMessageDialog(this, "Please enter a valid Patient ID");
+                        
+                    }catch(SQLException e){
+                        JOptionPane.showMessageDialog(this, e);
+                    }
+                    
+                    
+                
     }//GEN-LAST:event_capsuleButton21ActionPerformed
+int x = 1;
+    private void capsuleButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton11ActionPerformed
+       if (x == 1){ 
+        pText.setEchoChar((char) 0); // Show password   
+        x *= -1;
+       }else if(x == -1){         
+         pText.setEchoChar('•'); // Hide password
+         x *= -1;
+       }                           
+    }//GEN-LAST:event_capsuleButton11ActionPerformed
+int y = 1;
+    private void capsuleButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton12ActionPerformed
+       if (y == 1){ 
+        jPasswordField2.setEchoChar((char) 0); // Show password   
+        y *= -1;
+       }else if(y == -1){         
+         jPasswordField2.setEchoChar('•'); // Hide password
+         y *= -1;
+       }  
+    }//GEN-LAST:event_capsuleButton12ActionPerformed
 
     private void capsuleButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton16ActionPerformed
- loginPanel.setVisible(true);
-         nursePanel.setVisible(false);        // TODO add your handling code here:
+        // TODO add your handling code here://admin login
+        loginPanel.setVisible(true);
+         nursePanel.setVisible(false);
     }//GEN-LAST:event_capsuleButton16ActionPerformed
      
     public Time slotToTime(String slot){
@@ -3846,6 +3922,7 @@ public static String user;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton40;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton41;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton42;
+    private main.java.com.mycompany.hms.CapsuleButton capsuleButton43;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton5;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton6;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton7;
@@ -3991,7 +4068,6 @@ public static String user;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JDialog nurseAdd;
     private javax.swing.JTable nurseDetCond;
