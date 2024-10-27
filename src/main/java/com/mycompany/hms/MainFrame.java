@@ -5,7 +5,15 @@
 package main.java.com.mycompany.hms;
 
 import com.formdev.flatlaf.*;
+//import com.healthmarketscience.jackcess.Table;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.UnitValue;
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -3033,6 +3041,11 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton18.setcolorDefualt(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton18.setcolorHover(new java.awt.Color(153, 153, 153));
         capsuleButton18.setcolorPressed(java.awt.Color.gray);
+        capsuleButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton18ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound8Layout = new javax.swing.GroupLayout(panelRound8);
         panelRound8.setLayout(panelRound8Layout);
@@ -3325,7 +3338,7 @@ public class MainFrame extends javax.swing.JFrame {
        SwingUtilities.updateComponentTreeUI(appointmentEdit); //makes it look nice
        appointmentEdit.setLocationRelativeTo(this);
        appointmentEdit.setVisible(true);  
-
+       
 
 
        // TODO add your handling code here:
@@ -3935,6 +3948,87 @@ int y = 1;
         Parent.add(loginPanel, "loginPanel");
         cardLayout.show(Parent,"loginPanel");
     }//GEN-LAST:event_capsuleButton13ActionPerformed
+
+    private void capsuleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton18ActionPerformed
+        String reportsDir = Paths.get("src", "main", "Reports").toAbsolutePath().toString();
+        String dest = reportsDir + "/Patient_Report.pdf";
+        String BalOut;
+        String improved;
+        boolean improve;
+        try {
+            // Initialize PDF writer
+            PdfWriter writer = new PdfWriter(dest);
+            // Initialize PDF document
+            PdfDocument pdf = new PdfDocument(writer);
+            // Initialize document layout
+            Document document = new Document(pdf);
+
+            // Define a 3-column table with 100% width
+            Table table = new Table(3);
+            table.setWidth(UnitValue.createPercentValue(80));
+
+            // Add table header cells with styling
+            Cell header1 = new Cell().add(new Paragraph("Surname").setFontSize(12).setBold());
+            Cell header2 = new Cell().add(new Paragraph("Name").setFontSize(12).setBold());
+            Cell header3 = new Cell().add(new Paragraph("Room").setFontSize(12).setBold());
+            Cell header4 = new Cell().add(new Paragraph("State").setFontSize(12).setBold());
+            Cell header5 = new Cell().add(new Paragraph("Doctor").setFontSize(12).setBold());
+            Cell header6 = new Cell().add(new Paragraph("Improved").setFontSize(12).setBold());
+            Cell header7 = new Cell().add(new Paragraph("Balance Outstanding").setFontSize(12).setBold());
+//            header1.setBackgroundColor(ColorConstants.LIGHT_GRAY);
+//            header2.setBackgroundColor(ColorConstants.LIGHT_GRAY);
+//            header3.setBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.addCell(header1);
+            table.addCell(header2);
+            table.addCell(header3);
+            table.addCell(header4);
+            table.addCell(header5);
+            table.addCell(header6);
+            table.addCell(header7);
+            
+            String query = "SELECT Improving, BalOut FROM Patients";
+            
+            try{
+                Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
+                Statement s = c.createStatement();
+                ResultSet rs = s.executeQuery(query);
+                int column = 0;
+                while(rs.next()){
+                    BalOut = rs.getString("BalOut");
+                    improve = rs.getBoolean("Improving");
+                    if(improve)improved = "Yes";
+                    else improved = "No";
+                    
+                    // Add some rows with data
+                    for (int i = 0; i < 5; i++) {
+                        table.addCell(new Cell().add(new Paragraph((String)jTable10.getValueAt(i, column))));
+                        
+                    }
+                    
+                    table.addCell(new Cell().add(new Paragraph(improved)));
+                    table.addCell(new Cell().add(new Paragraph(BalOut)));
+                    column++;
+                }
+                
+                
+            }catch(SQLException e){
+                
+            }
+            
+            
+
+            // Add the table to the document
+            document.add(table);
+
+            // Close the document
+            document.close();
+
+            System.out.println("PDF created successfully!");
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_capsuleButton18ActionPerformed
      
     public Time slotToTime(String slot){
         LocalTime time;

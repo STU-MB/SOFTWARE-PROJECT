@@ -4736,6 +4736,9 @@
                       <Color blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capsuleButton18ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
