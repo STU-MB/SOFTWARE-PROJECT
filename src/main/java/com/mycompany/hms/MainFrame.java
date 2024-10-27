@@ -256,6 +256,7 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         capsuleButton4 = new main.java.com.mycompany.hms.CapsuleButton();
+        capsuleButton44 = new main.java.com.mycompany.hms.CapsuleButton();
         capsuleButton5 = new main.java.com.mycompany.hms.CapsuleButton();
         receptionistPanel = new javax.swing.JPanel();
         panelRound4 = new test.PanelRound();
@@ -2099,6 +2100,13 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton4.setText("Patient records");
         capsuleButton4.setcolorHover(new java.awt.Color(234, 234, 234));
         capsuleButton4.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        capsuleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton4ActionPerformed(evt);
+            }
+        });
+
+        capsuleButton44.setText("GENERATE REPORT");
 
         javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
         panelRound3.setLayout(panelRound3Layout);
@@ -2115,16 +2123,21 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(capsuleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
             .addGroup(panelRound3Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 963, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelRound3Layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27)
-                            .addComponent(capsuleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel5)))
+                .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRound3Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 963, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelRound3Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(capsuleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel5))))
+                    .addGroup(panelRound3Layout.createSequentialGroup()
+                        .addGap(314, 314, 314)
+                        .addComponent(capsuleButton44, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRound3Layout.setVerticalGroup(
@@ -2149,7 +2162,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(panelRound3Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(capsuleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(capsuleButton44, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         capsuleButton5.setText("Log Out");
@@ -2181,7 +2196,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(doctorWelcomePanelLayout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(386, Short.MAX_VALUE))
         );
         doctorWelcomePanelLayout.setVerticalGroup(
             doctorWelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3329,12 +3344,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_capsuleButton22ActionPerformed
 
     private void capsuleButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton23ActionPerformed
-      //delete button
-        doctor d = new doctor(url);
-       String SlotNum = d.getOption();
-       
-      
-    String deleteSQL = "DELETE FROM Appointments WHERE SlotNum = ?";
+      // Delete button
+    doctor d = new doctor(url);
+    String SlotNum = d.getOption();
+   
+    String deleteSQL = "UPDATE Appointments SET PatientCode = NULL, DoctorCode = NULL, NurseCode = NULL, Completed = NULL, RoomNumber = NULL WHERE SlotNum = ?";
 
     try (Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
          PreparedStatement pstmt = c.prepareStatement(deleteSQL)) {
@@ -3342,19 +3356,18 @@ public class MainFrame extends javax.swing.JFrame {
         // Set the SlotNum parameter
         pstmt.setString(1, SlotNum);
 
-        // Execute the delete statement
-        int rowsDeleted = pstmt.executeUpdate();
+        // Execute the update statement
+        int rowsUpdated = pstmt.executeUpdate();
 
-        if (rowsDeleted > 0) {
-            JOptionPane.showMessageDialog(this, "Appointment deleted successfully!");
+        if (rowsUpdated > 0) {
+            JOptionPane.showMessageDialog(this, "Appointment cleared successfully!");
         } else {
             JOptionPane.showMessageDialog(this, "No appointment found with the specified SlotNum.");
         }
 
     } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Error deleting appointment: " + e.getMessage());
+        JOptionPane.showMessageDialog(this, "Error updating appointment: " + e.getMessage());
     }
-
 
     }//GEN-LAST:event_capsuleButton23ActionPerformed
 
@@ -3772,6 +3785,8 @@ public static String user;
           // TODO add your handling code here: //logout button
          loginPanel.setVisible(true);
          doctorPanel.setVisible(false);
+         pText.setText("");
+         uText.setText("");
     }//GEN-LAST:event_capsuleButton5ActionPerformed
 
     private void capsuleButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton21ActionPerformed
@@ -3909,6 +3924,11 @@ int y = 1;
         a2.setDoctorTable(jTable9);
         a2.viewNurse();
     }//GEN-LAST:event_capsuleButton30ActionPerformed
+
+    private void capsuleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton4ActionPerformed
+       //update patient status and improving
+      
+    }//GEN-LAST:event_capsuleButton4ActionPerformed
      
     public Time slotToTime(String slot){
         LocalTime time;
@@ -4038,6 +4058,7 @@ int y = 1;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton41;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton42;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton43;
+    private main.java.com.mycompany.hms.CapsuleButton capsuleButton44;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton5;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton6;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton7;
