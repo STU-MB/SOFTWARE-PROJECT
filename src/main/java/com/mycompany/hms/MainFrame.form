@@ -4657,7 +4657,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Century Gothic" size="30" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Pateints"/>
+                    <Property name="text" type="java.lang.String" value="Patients"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane10">
@@ -4670,16 +4670,22 @@
                     <Component class="javax.swing.JTable" name="jTable10">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="5" rowCount="4">
+                          <Table columnCount="6" rowCount="20">
+                            <Column editable="true" title="Patient Id" type="java.lang.Object"/>
                             <Column editable="true" title="Surname" type="java.lang.Object"/>
                             <Column editable="true" title="Name" type="java.lang.Object"/>
-                            <Column editable="true" title="Room" type="java.lang.Object"/>
-                            <Column editable="true" title="State" type="java.lang.Object"/>
-                            <Column editable="true" title="Doctor" type="java.lang.Object"/>
+                            <Column editable="true" title="Illness" type="java.lang.Object"/>
+                            <Column editable="true" title="Doctor ID" type="java.lang.Object"/>
+                            <Column editable="true" title="Status" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
@@ -4744,6 +4750,9 @@
                       <Color blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capsuleButton18ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -4857,11 +4866,11 @@
                     <Component class="javax.swing.JTable" name="jTable12">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="4">
+                          <Table columnCount="4" rowCount="20">
+                            <Column editable="true" title="Doctor ID" type="java.lang.Object"/>
                             <Column editable="true" title="Surname" type="java.lang.Object"/>
                             <Column editable="true" title="Name" type="java.lang.Object"/>
-                            <Column editable="true" title="Qualification" type="java.lang.Object"/>
-                            <Column editable="true" title="Number of patients" type="java.lang.Object"/>
+                            <Column editable="true" title="Specialisation" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -4925,6 +4934,9 @@
                       <Color blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capsuleButton20ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

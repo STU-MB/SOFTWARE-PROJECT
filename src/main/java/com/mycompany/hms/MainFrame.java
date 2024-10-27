@@ -3009,17 +3009,33 @@ public class MainFrame extends javax.swing.JFrame {
         panelRound8.setRoundTopRight(30);
 
         jLabel17.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
-        jLabel17.setText("Pateints");
+        jLabel17.setText("Patients");
 
         jTable10.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Surname", "Name", "Room", "State", "Doctor"
+                "Patient Id", "Surname", "Name", "Illness", "Doctor ID", "Status"
             }
         ));
         jScrollPane10.setViewportView(jTable10);
@@ -3038,6 +3054,11 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton18.setcolorDefualt(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton18.setcolorHover(new java.awt.Color(153, 153, 153));
         capsuleButton18.setcolorPressed(java.awt.Color.gray);
+        capsuleButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton18ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound8Layout = new javax.swing.GroupLayout(panelRound8);
         panelRound8.setLayout(panelRound8Layout);
@@ -3104,10 +3125,26 @@ public class MainFrame extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Surname", "Name", "Qualification", "Number of patients"
+                "Doctor ID", "Surname", "Name", "Specialisation"
             }
         ));
         jScrollPane12.setViewportView(jTable12);
@@ -3126,6 +3163,11 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton20.setcolorDefualt(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton20.setcolorHover(new java.awt.Color(153, 153, 153));
         capsuleButton20.setcolorPressed(java.awt.Color.gray);
+        capsuleButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton20ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound11Layout = new javax.swing.GroupLayout(panelRound11);
         panelRound11.setLayout(panelRound11Layout);
@@ -3309,6 +3351,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void capsuleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton17ActionPerformed
         // TODO add your handling code here:
+        loginPanel.setVisible(true);
+        recordsManagerPanel.setVisible(false);
+        uText.setText("");
+        pText.setText("");
     }//GEN-LAST:event_capsuleButton17ActionPerformed
 
     private void capsuleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton1ActionPerformed
@@ -3317,10 +3363,22 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void capsuleButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton15ActionPerformed
         // TODO add your handling code here:
+         DialogHandler a = new DialogHandler(url); //instantaite the class
+       a.setTable(Patients); //table is the table in the edit dialog that we need to display to
+       a.displayPatientEditForm(); //displays data to table in edit dialog
+       SwingUtilities.updateComponentTreeUI(patientEdit); //makes it look nice
+       patientEdit.setLocationRelativeTo(this);
+       patientEdit.setVisible(true);  
     }//GEN-LAST:event_capsuleButton15ActionPerformed
 
     private void capsuleButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton19ActionPerformed
         // TODO add your handling code here:
+         DialogHandler a = new DialogHandler(url); //instantaite the class
+       a.setTable(Doctors); //table is the table in the edit dialog that we need to display to
+       a.displayDoctorEditForm(); //displays data to table in edit dialog
+       SwingUtilities.updateComponentTreeUI(doctorEdit); //makes it look nice
+       doctorEdit.setLocationRelativeTo(this);
+       doctorEdit.setVisible(true);  
     }//GEN-LAST:event_capsuleButton19ActionPerformed
 
     private void capsuleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton3ActionPerformed
@@ -3457,6 +3515,11 @@ public static String user;
         if(uText.getText().equals("R") && String.valueOf(pText.getPassword()).equals("r")){
             Parent.add(receptionistPanel, "receptionistPanel");
             cardLayout.show(Parent,"receptionistPanel");
+            
+        }
+         if(uText.getText().equals("M") && String.valueOf(pText.getPassword()).equals("m")){
+            Parent.add(recordsManagerPanel, "recordsManagerPanel");
+            cardLayout.show(Parent,"recordsManagerPanel");
             
         }
     }//GEN-LAST:event_capsuleButton14ActionPerformed
@@ -3929,6 +3992,20 @@ int y = 1;
        //update patient status and improving
       
     }//GEN-LAST:event_capsuleButton4ActionPerformed
+
+    private void capsuleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton18ActionPerformed
+        // TODO add your handling code here:
+         Admin a = new Admin(url);
+        a.setDoctorTable(jTable10);
+        a.ViewAllPatients();
+    }//GEN-LAST:event_capsuleButton18ActionPerformed
+
+    private void capsuleButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton20ActionPerformed
+        // TODO add your handling code here:
+          Admin a = new Admin(url);
+        a.setDoctorTable(jTable12);
+        a.ViewAllDoctors();
+    }//GEN-LAST:event_capsuleButton20ActionPerformed
      
     public Time slotToTime(String slot){
         LocalTime time;
