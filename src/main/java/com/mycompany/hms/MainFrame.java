@@ -3520,7 +3520,11 @@ public static String user;
          if(uText.getText().equals("M") && String.valueOf(pText.getPassword()).equals("m")){
             Parent.add(recordsManagerPanel, "recordsManagerPanel");
             cardLayout.show(Parent,"recordsManagerPanel");
-            
+                Admin a = new Admin(url);
+                a.setDoctorTable(jTable10);
+                a.ViewAllPatients();
+        a.setDoctorTable(jTable12);
+        a.ViewAllDoctors();
         }
     }//GEN-LAST:event_capsuleButton14ActionPerformed
 
@@ -4002,9 +4006,7 @@ int y = 1;
 
     private void capsuleButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton20ActionPerformed
         // TODO add your handling code here:
-          Admin a = new Admin(url);
-        a.setDoctorTable(jTable12);
-        a.ViewAllDoctors();
+      
     }//GEN-LAST:event_capsuleButton20ActionPerformed
      
     public Time slotToTime(String slot){
