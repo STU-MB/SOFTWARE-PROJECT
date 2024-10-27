@@ -989,11 +989,12 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(capsuleButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(patientAddLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(patientAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(patientAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel34)))))
+                        .addGroup(patientAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel34)
+                            .addGroup(patientAddLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         patientAddLayout.setVerticalGroup(
@@ -1245,10 +1246,15 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(58, 58, 58))
         );
 
-        nurseEdit.setSize(doctorEdit.getPreferredSize());
+        nurseEdit.setSize(new java.awt.Dimension(709, 452));
 
         Nurses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -1339,8 +1345,8 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nurseEditLayout.createSequentialGroup()
-                .addGap(0, 36, Short.MAX_VALUE)
-                .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(nurseEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(capsuleButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1364,9 +1370,9 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(capsuleButton42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(nurseEditLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                        .addGap(42, 42, 42)
                         .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         nurseAdd.setSize(nurseAdd.getPreferredSize());
@@ -1436,6 +1442,11 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton30.setcolorDefualt(new java.awt.Color(204, 204, 204));
         capsuleButton30.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton30.setcolorPressed(java.awt.Color.gray);
+        capsuleButton30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton30ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout nurseAddLayout = new javax.swing.GroupLayout(nurseAdd.getContentPane());
         nurseAdd.getContentPane().setLayout(nurseAddLayout);
@@ -2596,6 +2607,11 @@ public class MainFrame extends javax.swing.JFrame {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -3493,7 +3509,9 @@ public static String user;
     }//GEN-LAST:event_jTextField14ActionPerformed
 
     private void capsuleButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton31ActionPerformed
-        // TODO add your handling code here:
+        SwingUtilities.updateComponentTreeUI(nurseAdd);
+        nurseAdd.setLocationRelativeTo(this);
+        nurseAdd.setVisible(true);
     }//GEN-LAST:event_capsuleButton31ActionPerformed
 
     private void capsuleButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton32ActionPerformed
@@ -3854,6 +3872,43 @@ int y = 1;
         loginPanel.setVisible(true);
          nursePanel.setVisible(false);
     }//GEN-LAST:event_capsuleButton16ActionPerformed
+
+    private void capsuleButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton30ActionPerformed
+       String name = jTextField13.getText();
+       String surname = jTextField14.getText();
+       String insertSQL = "INSERT INTO Nurses (ID, Name, Surname) VALUES (?, ?, ?)"; 
+        
+        DataValidation d = new DataValidation(name);
+        if(d.validateLettersOnly()){
+            d.setString(surname);
+            if(d.validateLettersOnly()){
+                try{
+                    Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
+                    int rows  = countEntries("Nurses");
+                    rows++;
+                    String ID = "N00" + rows;
+                    
+                    
+                    PreparedStatement psmt = c.prepareStatement(insertSQL);
+                    psmt.setString(1, ID);
+                    psmt.setString(2, name);
+                    psmt.setString(3, surname);
+                    psmt.executeUpdate();
+                }catch(SQLException e){
+                    
+                }
+            }else JOptionPane.showMessageDialog(this, "Please enter a valid Surname");
+        }else JOptionPane.showMessageDialog(this, "Please enter a valid Name");
+        
+        
+        DialogHandler a = new DialogHandler(url);
+        a.setTable(Nurses);
+        a.displayNurseEditForm();
+        
+        Admin a2 = new Admin(url);
+        a2.setDoctorTable(jTable9);
+        a2.viewNurse();
+    }//GEN-LAST:event_capsuleButton30ActionPerformed
      
     public Time slotToTime(String slot){
         LocalTime time;

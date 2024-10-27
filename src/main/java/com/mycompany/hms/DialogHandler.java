@@ -508,7 +508,7 @@ public class DialogHandler {
                     p.executeUpdate();
                 }catch(SQLException e){
                     System.out.println(e);
-                    JOptionPane.showMessageDialog(null, "Please enter valid Information");
+                    //JOptionPane.showMessageDialog(null, "Please enter valid Information");
                 }
             }
         }
