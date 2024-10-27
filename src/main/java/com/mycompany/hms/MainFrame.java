@@ -235,8 +235,8 @@ public class MainFrame extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         panelRound2 = new test.PanelRound();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        adminID = new javax.swing.JTextField();
+        adminPassword = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         capsuleButton12 = new main.java.com.mycompany.hms.CapsuleButton();
         capsuleButton16 = new main.java.com.mycompany.hms.CapsuleButton();
@@ -293,7 +293,6 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane24 = new javax.swing.JScrollPane();
         jTable9 = new javax.swing.JTable();
         capsuleButton10 = new main.java.com.mycompany.hms.CapsuleButton();
-        jTextField1 = new javax.swing.JTextField();
         capsuleButton13 = new main.java.com.mycompany.hms.CapsuleButton();
         nursePanel = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -1882,15 +1881,15 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel8.setText("AdminID:");
 
-        jTextField2.setBackground(new java.awt.Color(246, 246, 246));
-        jTextField2.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        adminID.setBackground(new java.awt.Color(246, 246, 246));
+        adminID.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
+        adminID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                adminIDActionPerformed(evt);
             }
         });
 
-        jPasswordField2.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
+        adminPassword.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel9.setText("Password:");
@@ -1929,8 +1928,8 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(capsuleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelRound2Layout.createSequentialGroup()
                         .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(adminPassword)
+                            .addComponent(adminID, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(capsuleButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
@@ -1941,17 +1940,18 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(adminID, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound2Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelRound2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(capsuleButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                            .addComponent(adminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(capsuleButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)))
                 .addComponent(capsuleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -2663,13 +2663,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("Search");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
         panelRound5.setLayout(panelRound5Layout);
         panelRound5Layout.setHorizontalGroup(
@@ -2678,9 +2671,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(capsuleButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(capsuleButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         panelRound5Layout.setVerticalGroup(
@@ -2689,8 +2680,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound5Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
+                        .addGap(59, 59, 59)
                         .addComponent(capsuleButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -2701,6 +2691,11 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton13.setcolorHover(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton13.setcolorPressed(java.awt.Color.gray);
         capsuleButton13.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        capsuleButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton13ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout adminPanelLayout = new javax.swing.GroupLayout(adminPanel);
         adminPanel.setLayout(adminPanelLayout);
@@ -2720,7 +2715,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(adminPanelLayout.createSequentialGroup()
                         .addGap(113, 113, 113)
                         .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(421, Short.MAX_VALUE))
+                .addContainerGap(426, Short.MAX_VALUE))
         );
         adminPanelLayout.setVerticalGroup(
             adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3231,9 +3226,9 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordButton2ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void adminIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_adminIDActionPerformed
 
     private void capsuleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton7ActionPerformed
         CardLayout cl = (CardLayout) Parent.getLayout();
@@ -3464,10 +3459,6 @@ public static String user;
     private void uTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_uTextActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -3874,18 +3865,27 @@ int x = 1;
 int y = 1;
     private void capsuleButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton12ActionPerformed
        if (y == 1){ 
-        jPasswordField2.setEchoChar((char) 0); // Show password   
+        adminPassword.setEchoChar((char) 0); // Show password   
         y *= -1;
        }else if(y == -1){         
-         jPasswordField2.setEchoChar('•'); // Hide password
+         adminPassword.setEchoChar('•'); // Hide password
          y *= -1;
        }  
     }//GEN-LAST:event_capsuleButton12ActionPerformed
 
+    String AdminPassword = "admin";
+    String AdminID = "A1001";
+    
     private void capsuleButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton16ActionPerformed
         // TODO add your handling code here://admin login
-        loginPanel.setVisible(true);
-         nursePanel.setVisible(false);
+        String adminID = this.adminID.getText();
+        String adminPassword = String.valueOf(this.adminPassword.getPassword());
+        
+        if(adminID.equals(AdminID)&&adminPassword.equals(AdminPassword)){
+            CardLayout cardLayout = (CardLayout) Parent.getLayout();
+            Parent.add(adminPanel, "adminPanel");
+            cardLayout.show(Parent,"adminPanel");
+        }else JOptionPane.showMessageDialog(this, "Please enter a valid User ID and Password");
     }//GEN-LAST:event_capsuleButton16ActionPerformed
 
     private void capsuleButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton30ActionPerformed
@@ -3929,6 +3929,12 @@ int y = 1;
        //update patient status and improving
       
     }//GEN-LAST:event_capsuleButton4ActionPerformed
+
+    private void capsuleButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton13ActionPerformed
+        CardLayout cardLayout = (CardLayout) Parent.getLayout();
+        Parent.add(loginPanel, "loginPanel");
+        cardLayout.show(Parent,"loginPanel");
+    }//GEN-LAST:event_capsuleButton13ActionPerformed
      
     public Time slotToTime(String slot){
         LocalTime time;
@@ -4016,8 +4022,10 @@ int y = 1;
     private javax.swing.JTable Patients;
     private javax.swing.JTable SpecializationsAdmin;
     private javax.swing.JTable Specs;
+    private javax.swing.JTextField adminID;
     private javax.swing.JPanel adminLogin;
     private javax.swing.JPanel adminPanel;
+    private javax.swing.JPasswordField adminPassword;
     private javax.swing.JDialog appointmentAdd;
     private javax.swing.JDialog appointmentEdit;
     private main.java.com.mycompany.hms.CapsuleButton capsuleButton1;
@@ -4130,7 +4138,6 @@ int y = 1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -4191,13 +4198,11 @@ int y = 1;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
     private javax.swing.JTable jTable9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;

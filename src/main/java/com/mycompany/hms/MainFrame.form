@@ -2651,8 +2651,8 @@
                               <Component id="capsuleButton16" min="-2" pref="137" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jPasswordField2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField2" alignment="0" min="-2" pref="264" max="-2" attributes="0"/>
+                                      <Component id="adminPassword" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="adminID" alignment="0" min="-2" pref="264" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="capsuleButton12" min="-2" pref="44" max="-2" attributes="0"/>
@@ -2668,22 +2668,23 @@
                           <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField2" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
+                              <Component id="adminID" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel9" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
-                                      <Component id="jPasswordField2" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
+                                      <Component id="adminPassword" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace pref="34" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="capsuleButton12" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="34" max="32767" attributes="0"/>
                           <Component id="capsuleButton16" min="-2" pref="51" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
@@ -2699,7 +2700,7 @@
                     <Property name="text" type="java.lang.String" value="AdminID:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="adminID">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f6" green="f6" red="f6" type="rgb"/>
@@ -2709,10 +2710,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminIDActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JPasswordField" name="jPasswordField2">
+                <Component class="javax.swing.JPasswordField" name="adminPassword">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Calibri Light" size="24" style="0"/>
@@ -3606,7 +3607,7 @@
                               <Component id="panelRound5" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="421" max="32767" attributes="0"/>
+                      <EmptySpace pref="426" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3670,10 +3671,7 @@
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Component id="jTabbedPane4" min="-2" pref="731" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="capsuleButton10" min="-2" pref="112" max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="95" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="capsuleButton10" min="-2" pref="112" max="-2" attributes="0"/>
                           <EmptySpace pref="45" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -3684,8 +3682,7 @@
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                   <Component id="capsuleButton10" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jTabbedPane4" min="-2" max="-2" attributes="0"/>
@@ -4049,14 +4046,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capsuleButton10ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Search"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
-                  </Events>
-                </Component>
               </SubComponents>
             </Container>
             <Component class="main.java.com.mycompany.hms.CapsuleButton" name="capsuleButton13">
@@ -4075,6 +4064,9 @@
                   <Font name="Century Gothic" size="14" style="1"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capsuleButton13ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
