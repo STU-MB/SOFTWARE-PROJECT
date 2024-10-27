@@ -11,9 +11,13 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import java.awt.*;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -3012,17 +3016,33 @@ public class MainFrame extends javax.swing.JFrame {
         panelRound8.setRoundTopRight(30);
 
         jLabel17.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
-        jLabel17.setText("Pateints");
+        jLabel17.setText("Patients");
 
         jTable10.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Surname", "Name", "Room", "State", "Doctor"
+                "Patient Id", "Surname", "Name", "Illness", "Doctor ID", "Status"
             }
         ));
         jScrollPane10.setViewportView(jTable10);
@@ -3112,10 +3132,26 @@ public class MainFrame extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Surname", "Name", "Qualification", "Number of patients"
+                "Doctor ID", "Surname", "Name", "Specialisation"
             }
         ));
         jScrollPane12.setViewportView(jTable12);
@@ -3134,6 +3170,11 @@ public class MainFrame extends javax.swing.JFrame {
         capsuleButton20.setcolorDefualt(java.awt.SystemColor.activeCaptionBorder);
         capsuleButton20.setcolorHover(new java.awt.Color(153, 153, 153));
         capsuleButton20.setcolorPressed(java.awt.Color.gray);
+        capsuleButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capsuleButton20ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound11Layout = new javax.swing.GroupLayout(panelRound11);
         panelRound11.setLayout(panelRound11Layout);
@@ -3317,6 +3358,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void capsuleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton17ActionPerformed
         // TODO add your handling code here:
+        loginPanel.setVisible(true);
+        recordsManagerPanel.setVisible(false);
+        uText.setText("");
+        pText.setText("");
     }//GEN-LAST:event_capsuleButton17ActionPerformed
 
     private void capsuleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton1ActionPerformed
@@ -3325,10 +3370,22 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void capsuleButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton15ActionPerformed
         // TODO add your handling code here:
+         DialogHandler a = new DialogHandler(url); //instantaite the class
+       a.setTable(Patients); //table is the table in the edit dialog that we need to display to
+       a.displayPatientEditForm(); //displays data to table in edit dialog
+       SwingUtilities.updateComponentTreeUI(patientEdit); //makes it look nice
+       patientEdit.setLocationRelativeTo(this);
+       patientEdit.setVisible(true);  
     }//GEN-LAST:event_capsuleButton15ActionPerformed
 
     private void capsuleButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton19ActionPerformed
         // TODO add your handling code here:
+         DialogHandler a = new DialogHandler(url); //instantaite the class
+       a.setTable(Doctors); //table is the table in the edit dialog that we need to display to
+       a.displayDoctorEditForm(); //displays data to table in edit dialog
+       SwingUtilities.updateComponentTreeUI(doctorEdit); //makes it look nice
+       doctorEdit.setLocationRelativeTo(this);
+       doctorEdit.setVisible(true);  
     }//GEN-LAST:event_capsuleButton19ActionPerformed
 
     private void capsuleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton3ActionPerformed
@@ -3466,6 +3523,15 @@ public static String user;
             Parent.add(receptionistPanel, "receptionistPanel");
             cardLayout.show(Parent,"receptionistPanel");
             
+        }
+         if(uText.getText().equals("M") && String.valueOf(pText.getPassword()).equals("m")){
+            Parent.add(recordsManagerPanel, "recordsManagerPanel");
+            cardLayout.show(Parent,"recordsManagerPanel");
+                Admin a = new Admin(url);
+                a.setDoctorTable(jTable10);
+                a.ViewAllPatients();
+        a.setDoctorTable(jTable12);
+        a.ViewAllDoctors();
         }
     }//GEN-LAST:event_capsuleButton14ActionPerformed
 
@@ -3793,6 +3859,10 @@ public static String user;
          uText.setText("");
     }//GEN-LAST:event_capsuleButton5ActionPerformed
 
+    private void capsuleButton20ActionPerformed(java.awt.event.ActionEvent evt) {
+        System.out.println("it work");
+    }
+    
     private void capsuleButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capsuleButton21ActionPerformed
         String Doctor = jTextField11.getText();
     String Nurse = jTextField12.getText();
@@ -3962,17 +4032,24 @@ int y = 1;
             PdfDocument pdf = new PdfDocument(writer);
             // Initialize document layout
             Document document = new Document(pdf);
-
+            
+            Paragraph heading = new Paragraph("Patient Records")
+            .setFontSize(16) // Set font size for the heading
+            .setBold()       // Make it bold
+            .setTextAlignment(TextAlignment.CENTER); // Center the heading
+            document.add(heading);
+            
             // Define a 3-column table with 100% width
-            Table table = new Table(3);
-            table.setWidth(UnitValue.createPercentValue(80));
+            Table table = new Table(7);
+            table.setWidth(UnitValue.createPercentValue(80))
+            .setHorizontalAlignment(HorizontalAlignment.CENTER);
 
             // Add table header cells with styling
             Cell header1 = new Cell().add(new Paragraph("Surname").setFontSize(12).setBold());
             Cell header2 = new Cell().add(new Paragraph("Name").setFontSize(12).setBold());
-            Cell header3 = new Cell().add(new Paragraph("Room").setFontSize(12).setBold());
-            Cell header4 = new Cell().add(new Paragraph("State").setFontSize(12).setBold());
-            Cell header5 = new Cell().add(new Paragraph("Doctor").setFontSize(12).setBold());
+            Cell header3 = new Cell().add(new Paragraph("Illness").setFontSize(12).setBold());
+            Cell header4 = new Cell().add(new Paragraph("Doctor").setFontSize(12).setBold());
+            Cell header5 = new Cell().add(new Paragraph("State").setFontSize(12).setBold());
             Cell header6 = new Cell().add(new Paragraph("Improved").setFontSize(12).setBold());
             Cell header7 = new Cell().add(new Paragraph("Balance Outstanding").setFontSize(12).setBold());
 //            header1.setBackgroundColor(ColorConstants.LIGHT_GRAY);
@@ -3992,7 +4069,7 @@ int y = 1;
                 Connection c = DriverManager.getConnection("jdbc:ucanaccess://" + Paths.get(url).toAbsolutePath().toString());
                 Statement s = c.createStatement();
                 ResultSet rs = s.executeQuery(query);
-                int column = 0;
+                int row = 0;
                 while(rs.next()){
                     BalOut = rs.getString("BalOut");
                     improve = rs.getBoolean("Improving");
@@ -4000,14 +4077,14 @@ int y = 1;
                     else improved = "No";
                     
                     // Add some rows with data
-                    for (int i = 0; i < 5; i++) {
-                        table.addCell(new Cell().add(new Paragraph((String)jTable10.getValueAt(i, column))));
+                    for (int i = 1; i < 6; i++) {
+                        table.addCell(new Cell().add(new Paragraph((String)jTable10.getValueAt(row, i))));
                         
                     }
                     
                     table.addCell(new Cell().add(new Paragraph(improved)));
                     table.addCell(new Cell().add(new Paragraph(BalOut)));
-                    column++;
+                    row++;
                 }
                 
                 
@@ -4023,11 +4100,25 @@ int y = 1;
             // Close the document
             document.close();
 
-            System.out.println("PDF created successfully!");
-
+            
+            
+            
+            
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        
+        int openPDF = JOptionPane.showConfirmDialog(this, "Record created successfully.\nWould you like to open your PDF?");
+            
+            if(openPDF == JOptionPane.YES_OPTION){
+                File pdfFile = new File(dest);
+                try{
+                    Desktop.getDesktop().open(pdfFile);
+                }catch(IOException e){
+                    
+                }
+                
+            }
     }//GEN-LAST:event_capsuleButton18ActionPerformed
      
     public Time slotToTime(String slot){
